@@ -18,12 +18,12 @@ CORNER_RADIUS = 9;
 CAMERA_HOLE = "yes"; // [yes,no]
 //Meassure the camera from left to right! (mm)
 CAMERA_LEFT_TO_RIGHT_SIZE = 15.0;
-//Meassure the distance from the left edge of the phone to the left edge of your camera! (mm)
-CAMERA_LEFT_OFFSET = 31.0;
+//Meassure the distance from the left edge of the phone to the middle of your camera! (mm)
+CAMERA_LEFT_OFFSET = 38.125;
 //Meassure the camera from bottom to top! (mm)
 CAMERA_TOP_TO_BOTTOM_SIZE = 25.0;
-//Meassure the distance from the top edge of the phone to the top edge of your camera! (mm)
-CAMERA_TOP_OFFSET = 11.0;
+//Meassure the distance from the top edge of the phone to the middle of your camera! (mm)
+CAMERA_TOP_OFFSET = 23.4;
 //Meassure the radius of the camera (like phones corner)! (mm)
 CAMERA_RADIUS = 7.5;
 
@@ -34,12 +34,12 @@ CAMERA_RADIUS = 7.5;
 FLASHLIGHT_HOLE = "yes"; // [yes,no]
 //Meassure the flashlight from left to right! (mm)
 FLASHLIGHT_LEFT_TO_RIGHT_SIZE = 5.0;
-//Meassure the distance from the left edge of the phone to the left edge of your flashlight! (mm)
-FLASHLIGHT_LEFT_OFFSET = 48.5;
+//Meassure the distance from the left edge of the phone to the middle of your flashlight! (mm)
+FLASHLIGHT_LEFT_OFFSET = 50.7;
 //Meassure the flashlight from bottom to top! (mm)
 FLASHLIGHT_TOP_TO_BOTTOM_SIZE = 5.0;
-//Meassure the distance from the top edge of the phone to the top edge of your flashlight! (mm)
-FLASHLIGHT_TOP_OFFSET = 16.5;
+//Meassure the distance from the top edge of the phone to the middle of your flashlight! (mm)
+FLASHLIGHT_TOP_OFFSET = 18.3;
 //Meassure the radius of the flashlight (like phones corner)! (mm)
 FLASHLIGHT_RADIUS = 2.5;
 
@@ -49,12 +49,12 @@ FLASHLIGHT_RADIUS = 2.5;
 FINGERPRINT_HOLE = "yes"; // [yes,no]
 //Meassure the fingerprint sensor from left to right! (mm)
 FINGERPRINT_LEFT_TO_RIGHT_SIZE = 15;
-//Meassure the distance from the left edge of the phone to the left edge of your fingerprint sensor! (mm)
-FINGERPRINT_LEFT_OFFSET = 31.0;
+//Meassure the distance from the left edge of the phone to the middle of your fingerprint sensor! (mm)
+FINGERPRINT_LEFT_OFFSET = 38.125;
 //Meassure the fingerprint sensor from bottom to top! (mm)
 FINGERPRINT_TOP_TO_BOTTOM_SIZE = 15;
-//Meassure the distance from the top edge of the phone to the top edge of your fingerprint sensor! (mm)
-FINGERPRINT_TOP_OFFSET = 35;
+//Meassure the distance from the top edge of the phone to the middle of your fingerprint sensor! (mm)
+FINGERPRINT_TOP_OFFSET = 41.5;
 //Meassure the radius of the fingerprint sensor (like phones corner)! (mm)
 FINGERPRINT_RADIUS = 7.25;
 ;
@@ -96,7 +96,7 @@ USB_PLUG_SHAPE = "Roundy Rectangle"; // [Roundy Rectangle,Round]
 //What size should the hole have?
 USB_PLUG_SIZE = 12;
 //Type in the offset (middle point) of your Hole from left (if the side is Top or Bottom) or top (if the side is Left or Right)
-USB_PLUG_OFFSET = 38.5;
+USB_PLUG_OFFSET = 38.125;
 
 /* [Speaker 1] */
 
@@ -196,7 +196,7 @@ $fa=0.5; $fs=0.5;
 Cover();
      
 //WallHole(side = "Right", shape="Roundy Rectangle", off = 0, size = 33);
-
+//Hole(xoff = 0, yoff = 0, xsize = 25, ysize = 15, radius = 7.5);
 //****************Modules********************
 
 //Main Modules
@@ -252,7 +252,7 @@ module Cover()
 
 module Hole(xoff = 0, yoff = 0, xsize = 20, ysize = 20, radius = 10)
 {
-    translate([radius+LENGTH/2-xsize-xoff,radius-WIDTH/2+yoff,-BASEPLATE_THICKNESS*H_OVERTHICKNESS/2])
+    translate([LENGTH/2-xoff-xsize/2+radius,-WIDTH/2+yoff-ysize/2+radius,-BASEPLATE_THICKNESS*H_OVERTHICKNESS/2])
     {
         if (radius == 0) //rect 
         {
