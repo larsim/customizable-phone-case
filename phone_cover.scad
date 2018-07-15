@@ -66,7 +66,7 @@ VOLUME_BUTTON_HOLE = "yes"; // [yes,no]
 //On which side of your phone is it?
 VOLUME_BUTTON_SIDE = "Left"; // [Right,Left,Top,Bottom]
 //Which Shape do you want the hole to be?
-VOLUME_BUTTON_SHAPE = "Roundy Rectangle"; // [Square,Round Rectangle,Roundy Rectangle,Round]
+VOLUME_BUTTON_SHAPE = "Roundy Rectangle"; // [Roundy Rectangle,Round]
 //What size should the hole have?
 VOLUME_BUTTON_SIZE = 20;
 //Type in the offset (middle point) of your Hole from left (if the side is Top or Bottom) or top (if the side is Left or Right)
@@ -92,7 +92,7 @@ USB_PLUG_HOLE = "yes"; // [yes,no]
 //On which side of your phone is it?
 USB_PLUG_SIDE = "Bottom"; // [Right,Left,Top,Bottom]
 //Which Shape do you want the hole to be?
-USB_PLUG_SHAPE = "Roundy Rectangle"; // [SRoundy Rectangle,Round]
+USB_PLUG_SHAPE = "Roundy Rectangle"; // [Roundy Rectangle,Round]
 //What size should the hole have?
 USB_PLUG_SIZE = 12;
 //Type in the offset (middle point) of your Hole from left (if the side is Top or Bottom) or top (if the side is Left or Right)
@@ -136,7 +136,7 @@ HEADPHONE_JACK_SHAPE = "Round"; // [Roundy Rectangle,Round]
 HEADPHONE_JACK_SIZE = 0;
 //Type in the offset (middle point) of your Hole from left (if the side is Top or Bottom) or top (if the side is Left or Right)
 HEADPHONE_JACK_OFFSET = 19;
-
+        
 
 /* [Cover Settings] */
 
@@ -194,7 +194,7 @@ UPPER_FILLET_RADIUS = HOLDER_WIDTH;
 $fa=0.5; $fs=0.5;
 
 Cover();
-
+     
 //WallHole(side = "Right", shape="Roundy Rectangle", off = 0, size = 33);
 
 //****************Modules********************
@@ -206,7 +206,7 @@ module Cover()
     {
         union()
         {
-            Baseplate();
+            Baseplate(); 
             Walls(size_l= WALL_TOP_TO_BOTTOM_LENGHT, size_w = WALL_LEFT_TO_RIGHT_LENGHT,smoother = SMOOTHER);
             //HolderCorners();
             //HolderWalls();
@@ -254,7 +254,7 @@ module Hole(xoff = 0, yoff = 0, xsize = 20, ysize = 20, radius = 10)
 {
     translate([radius+LENGTH/2-xsize-xoff,radius-WIDTH/2+yoff,-BASEPLATE_THICKNESS*H_OVERTHICKNESS/2])
     {
-        if (radius == 0) //rect
+        if (radius == 0) //rect 
         {
             cube([xsize-2*radius,ysize-2*radius,BASEPLATE_THICKNESS*H_OVERTHICKNESS]);
         }
@@ -266,31 +266,31 @@ module Hole(xoff = 0, yoff = 0, xsize = 20, ysize = 20, radius = 10)
                 cylinder(h = BASEPLATE_THICKNESS*H_OVERTHICKNESS/2,r = radius);
             }
         }
-        else if(radius*2 == xsize && radius*2 < ysize) //connected cyls
+        else if(radius*2 == xsize && radius*2 < ysize) //connected cyls 
         {
-            hull()
+            hull() 
             {
                 translate([0,ysize-2*radius,0]) {cylinder(h = BASEPLATE_THICKNESS*H_OVERTHICKNESS,r = radius);}
                 cylinder(h = BASEPLATE_THICKNESS*H_OVERTHICKNESS,r = radius);
             }
         }
-        else if(radius*2 == ysize && radius*2 < xsize) //connected cyls
+        else if(radius*2 == ysize && radius*2 < xsize) //connected cyls 
         {
-            hull()
+            hull() 
             {
                 translate([xsize-2*radius,0,0]) {cylinder(h = BASEPLATE_THICKNESS*H_OVERTHICKNESS,r = radius);}
                 cylinder(h = BASEPLATE_THICKNESS*H_OVERTHICKNESS,r = radius);
             }
         }
-        else if(radius*2 == ysize && radius*2 == xsize) //circle
+        else if(radius*2 == ysize && radius*2 == xsize) //circle 
         {
             cylinder(h = BASEPLATE_THICKNESS*H_OVERTHICKNESS,r = radius);
         }
         else
         {
-            echo ("ERROR when making hole, 2*radius has to be <= both sizes");
+            echo ("ERROR when making hole, 2*radius has to be <= both sizes"); 
         }
-    }
+    } 
 }
 
 module WallHole(side = "Right", shape="Round", off = 10, size = 20)
@@ -307,7 +307,7 @@ module WallHole(side = "Right", shape="Round", off = 10, size = 20)
                     cylinder(h = BASEPLATE_THICKNESS*H_OVERTHICKNESS/2,r = HEIGHT/4);
                 }
             }
-
+            
         }
         if(side == "Bottom")
         {
@@ -341,16 +341,16 @@ module WallHole(side = "Right", shape="Round", off = 10, size = 20)
                     cylinder(h = BASEPLATE_THICKNESS*H_OVERTHICKNESS/2,r = HEIGHT/4);
                 }
             }
-        }
+        }     
     }
-    else if(shape=="Round") //circle
+    else if(shape=="Round") //circle 
     {
         if(side == "Top")
         {
             translate([LENGTH/2+(WALL_THICKNESS*OVERTHICKNESS)/2+1,WIDTH/2-off,BASEPLATE_THICKNESS+HEIGHT/2]) rotate([0,270,0])
             {
                 translate([0,0,0]) {cylinder(h = WALL_THICKNESS*OVERTHICKNESS,r = HEIGHT/2);}
-
+    
             }
         }
         if(side == "Bottom")
@@ -358,7 +358,7 @@ module WallHole(side = "Right", shape="Round", off = 10, size = 20)
             translate([-(LENGTH/2-(WALL_THICKNESS*OVERTHICKNESS)/2+1),WIDTH/2-off,BASEPLATE_THICKNESS+HEIGHT/2]) rotate([0,270,0])
             {
                 translate([0,0,0]) {cylinder(h = WALL_THICKNESS*OVERTHICKNESS,r = HEIGHT/2);}
-
+    
             }
         }
         if(side == "Left")
@@ -366,7 +366,7 @@ module WallHole(side = "Right", shape="Round", off = 10, size = 20)
             translate([LENGTH/2-off,WIDTH/2+(WALL_THICKNESS*OVERTHICKNESS)/2+1,BASEPLATE_THICKNESS+HEIGHT/2]) rotate([0,270,90])
             {
                 translate([0,0,0]) {cylinder(h = WALL_THICKNESS*OVERTHICKNESS,r = HEIGHT/2);}
-
+    
             }
         }
         if(side == "Right")
@@ -375,18 +375,18 @@ module WallHole(side = "Right", shape="Round", off = 10, size = 20)
             {
                 translate([0,0,0]) {cylinder(h = WALL_THICKNESS*OVERTHICKNESS,r = HEIGHT/2);}
             }
-        }
-    }
+        } 
+    }   
 }
 
-module Baseplate()
+module Baseplate() 
 {
-    translate([-(LENGTH-2*CORNER_RADIUS)/2,-(WIDTH-2*CORNER_RADIUS)/2,0])
+    translate([-(LENGTH-2*CORNER_RADIUS)/2,-(WIDTH-2*CORNER_RADIUS)/2,0]) 
     minkowski()
     {
         cube([LENGTH-2*CORNER_RADIUS, WIDTH-2*CORNER_RADIUS,BASEPLATE_THICKNESS/2]);
         cylinder(h = BASEPLATE_THICKNESS/2,r = CORNER_RADIUS);
-    }
+    }  
 }
 module WallCorners(smoother = 1)
 {
@@ -395,7 +395,7 @@ module WallCorners(smoother = 1)
         translate([(LENGTH+(2*WALL_THICKNESS))/2,(WIDTH+(2*WALL_THICKNESS))/2,0])
         rotate([0,0,180])
         {
-            curve(smoother);
+            curve(smoother);    
         }
         translate([-(LENGTH+(2*WALL_THICKNESS))/2,(WIDTH+(2*WALL_THICKNESS))/2,0])
         rotate([0,0,270])
@@ -472,7 +472,7 @@ module Walls(size_l=17, size_w=20, smoother = 1)
                 }
                 translate([0,0,BASEPLATE_THICKNESS]) linear_extrude(height = ABS_HEIGHT)
                 {
-
+                    
                     {square([(LENGTH-(2*CORNER_RADIUS))*(100-size_l)/100,WALL_THICKNESS*2+HOLDER_WIDTH], center = true);}
                 }
             }
@@ -488,9 +488,9 @@ module Walls(size_l=17, size_w=20, smoother = 1)
 
 module WallShape ()
 {
-
+    
     union()
-    {
+    {    
         //WALL
         square([ABS_HEIGHT,WALL_THICKNESS]);
         //Holder
@@ -517,12 +517,12 @@ module WallShape ()
             }
         }
     }
-
+    
 }
 
 module ShapeSmoother(smoother = 1)
 {
-
+    
         intersection()
         {
             if(smoother == 1)
@@ -532,10 +532,10 @@ module ShapeSmoother(smoother = 1)
             }
             WallShape ();
         }
-
-
+        
+    
 }
-
+    
 
 module curve(smoother = 1)
 {
@@ -545,12 +545,12 @@ module curve(smoother = 1)
         rotate_extrude()translate([WALL_THICKNESS+CORNER_RADIUS,0,0]) rotate([0,0,90])
         {
             difference()
-            {
-
+            {   
+                
                 ShapeSmoother(smoother);
                 translate([-ABS_HEIGHT*OVERTHICKNESS/4,WALL_THICKNESS+CORNER_RADIUS])
-                {
-
+                {  
+                     
                      square([ABS_HEIGHT*OVERTHICKNESS,WALL_THICKNESS+HOLDER_WIDTH]);
                 }
             }
@@ -567,3 +567,4 @@ module curve(smoother = 1)
         }
     }
 }
+
