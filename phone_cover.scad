@@ -64,7 +64,7 @@ FINGERPRINT_RADIUS = 7.25;
 //Do you have a volume button?
 VOLUME_BUTTON_HOLE = "yes"; // [yes,no]
 //On which side of your phone is it?
-VOLUME_BUTTON_SIDE = "Left"; // [Right,Left,Top,Bottom]
+VOLUME_BUTTON_SIDE = "Right"; // [Right,Left,Top,Bottom]
 //Which Shape do you want the hole to be?
 VOLUME_BUTTON_SHAPE = "Roundy Rectangle"; // [Roundy Rectangle,Round]
 //What size should the hole have?
