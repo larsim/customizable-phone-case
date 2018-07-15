@@ -38,6 +38,15 @@ Standard Values are for a Honor 6X!
 0.3.1:
 + Bugfix: Holes on the left side of the case are now working right
 
-0.4:
+0.4 - *16.7.2018*:
 + Changed the coordinates of the baseplate holes (camera,...) to the middle of the hole
 + Various bugfixes with customizer ui
+
+## Avaliable Remixes:
+
++ Honor 6X
++ Samsung A8
++ Samsung C5
++ Sony Xperia E3
++ LG K20
++ Uhans Max 2 Phablet
