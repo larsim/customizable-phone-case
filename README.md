@@ -11,7 +11,16 @@ Standard Values are for a Honor 6X!
 
 [**Bitbucket repo:**](https://bitbucket.org/simon4web/customizable-phone-case)  (started with version 0.3.1, you can use issue tracking there as well for bugs)
 
-[**Thingiverse:**](https://www.thingiverse.com/thing:2561342)  
+[**Thingiverse:**](https://www.thingiverse.com/thing:2561342)
+
+## Avaliable Remixes:
+
++ Honor 6X
++ Samsung A8
++ Samsung C5
++ Sony Xperia E3
++ LG K20
++ Uhans Max 2 Phablet 
 
 ## Version Log:
 
@@ -41,12 +50,3 @@ Standard Values are for a Honor 6X!
 0.4 - *16.7.2018*:
 + Changed the coordinates of the baseplate holes (camera,...) to the middle of the hole
 + Various bugfixes with customizer ui
-
-## Avaliable Remixes:
-
-+ Honor 6X
-+ Samsung A8
-+ Samsung C5
-+ Sony Xperia E3
-+ LG K20
-+ Uhans Max 2 Phablet
