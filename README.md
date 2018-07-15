@@ -37,3 +37,7 @@ Standard Values are for a Honor 6X!
 
 0.3.1:
 + Bugfix: Holes on the left side of the case are now working right
+
+0.4:
++ Changed the coordinates of the baseplate holes (camera,...) to the middle of the hole
++ Various bugfixes with customizer ui
