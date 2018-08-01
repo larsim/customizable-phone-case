@@ -2,9 +2,9 @@
 
 # Fully Customizable Smartphone Case
 
-Just a capiller is needed to create your personal phone case for litterally every smartphone, tablet or any other stuff you can imagine!
+Just a capiller is needed to create your personal phone case for literally every smartphone, tablet or any other stuff you can imagine!
 
-Please leave experiences, buggs, possible improvements, or more desirable features
+Please leave experiences, bugs, possible improvements, or more desirable features
 in the comments!
 
 Standard Values are for a Honor 6X!
@@ -20,7 +20,7 @@ Standard Values are for a Honor 6X!
 + Samsung C5
 + Sony Xperia E3
 + LG K20
-+ Uhans Max 2 Phablet 
++ Uhans Max 2 Phablet
 
 ## Version Log:
 
