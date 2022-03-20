@@ -349,7 +349,7 @@ module WallHole(side = "Right", shape="Round", off = 10, size = 20)
         {
             translate([LENGTH/2+(WALL_THICKNESS*OVERTHICKNESS)/2+1,WIDTH/2-off,BASEPLATE_THICKNESS+HEIGHT/2]) rotate([0,270,0])
             {
-                translate([0,0,0]) {cylinder(h = WALL_THICKNESS*OVERTHICKNESS,r = HEIGHT/2);}
+                translate([0,0,0]) {cylinder(h = WALL_THICKNESS*OVERTHICKNESS,r = size/2);}
 
             }
         }
@@ -357,7 +357,7 @@ module WallHole(side = "Right", shape="Round", off = 10, size = 20)
         {
             translate([-(LENGTH/2-(WALL_THICKNESS*OVERTHICKNESS)/2+1),WIDTH/2-off,BASEPLATE_THICKNESS+HEIGHT/2]) rotate([0,270,0])
             {
-                translate([0,0,0]) {cylinder(h = WALL_THICKNESS*OVERTHICKNESS,r = HEIGHT/2);}
+                translate([0,0,0]) {cylinder(h = WALL_THICKNESS*OVERTHICKNESS,r = size/2);}
 
             }
         }
@@ -365,7 +365,7 @@ module WallHole(side = "Right", shape="Round", off = 10, size = 20)
         {
             translate([LENGTH/2-off,WIDTH/2+(WALL_THICKNESS*OVERTHICKNESS)/2+1,BASEPLATE_THICKNESS+HEIGHT/2]) rotate([0,270,90])
             {
-                translate([0,0,0]) {cylinder(h = WALL_THICKNESS*OVERTHICKNESS,r = HEIGHT/2);}
+                translate([0,0,0]) {cylinder(h = WALL_THICKNESS*OVERTHICKNESS,r = size/2);}
 
             }
         }
@@ -373,7 +373,7 @@ module WallHole(side = "Right", shape="Round", off = 10, size = 20)
         {
             translate([LENGTH/2-off,-(WIDTH/2-(WALL_THICKNESS*OVERTHICKNESS)/2+1),BASEPLATE_THICKNESS+HEIGHT/2]) rotate([0,270,90])
             {
-                translate([0,0,0]) {cylinder(h = WALL_THICKNESS*OVERTHICKNESS,r = HEIGHT/2);}
+                translate([0,0,0]) {cylinder(h = WALL_THICKNESS*OVERTHICKNESS,r = size/2);}
             }
         }
     }
