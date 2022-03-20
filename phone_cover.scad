@@ -67,6 +67,8 @@ VOLUME_BUTTON_SIDE = "Right"; // [Right,Left,Top,Bottom]
 VOLUME_BUTTON_SHAPE = "Roundy Rectangle"; // [Roundy Rectangle,Round]
 //What size should the hole have?
 VOLUME_BUTTON_SIZE = 17.0;
+//How high hole?
+VOLUME_BUTTON_HEIGHT = 4.0;
 //Type in the offset (middle point) of your Hole from left (if the side is Top or Bottom) or top (if the side is Left or Right)
 VOLUME_BUTTON_OFFSET = 46.0;
 
@@ -80,6 +82,8 @@ POWER_BUTTON_SIDE = "Right"; // [Right,Left,Top,Bottom]
 POWER_BUTTON_SHAPE = "Roundy Rectangle"; // [Roundy Rectangle,Round]
 //What size should the hole have?
 POWER_BUTTON_SIZE = 16;
+//How high hole?
+POWER_BUTTON_HEIGHT = 5;
 //Type in the offset (middle point) of your Hole from left (if the side is Top or Bottom) or top (if the side is Left or Right)
 POWER_BUTTON_OFFSET = 72.5;
 
@@ -93,6 +97,8 @@ USB_PLUG_SIDE = "Bottom"; // [Right,Left,Top,Bottom]
 USB_PLUG_SHAPE = "Roundy Rectangle"; // [Roundy Rectangle,Round]
 //What size should the hole have?
 USB_PLUG_SIZE = 12;
+//How high hole?
+USB_PLUG_HEIGHT = 5;
 //Type in the offset (middle point) of your Hole from left (if the side is Top or Bottom) or top (if the side is Left or Right)
 USB_PLUG_OFFSET = WIDTH / 2;
 
@@ -106,6 +112,8 @@ SPEAKER_1_SIDE = "Bottom"; // [Right,Left,Top,Bottom]
 SPEAKER_1_SHAPE = "Round"; // [Roundy Rectangle,Round]
 //What size should the hole have?
 SPEAKER_1_SIZE = 2;
+//How high hole?
+SPEAKER_1_HEIGHT = 2;
 //Type in the offset (middle point) of your Hole from left (if the side is Top or Bottom) or top (if the side is Left or Right)
 SPEAKER_1_OFFSET = 25.0;
 
@@ -119,6 +127,8 @@ SPEAKER_2_SIDE = "Top"; // [Right,Left,Top,Bottom]
 SPEAKER_2_SHAPE = "Round"; // [Roundy Rectangle,Round]
 //What size should the hole have?
 SPEAKER_2_SIZE = 2.0;
+//How high hole?
+SPEAKER_2_HEIGHT = 2;
 //Type in the offset (middle point) of your Hole from left (if the side is Top or Bottom) or top (if the side is Left or Right)
 SPEAKER_2_OFFSET = 56.0;
 
@@ -132,6 +142,8 @@ HEADPHONE_JACK_SIDE = "Top"; // [Right,Left,Top,Bottom]
 HEADPHONE_JACK_SHAPE = "Round"; // [Roundy Rectangle,Round]
 //What size should the hole have?
 HEADPHONE_JACK_SIZE = 5.0;
+//How high hole?
+HEADPHONE_JACK_HEIGHT = 2;
 //Type in the offset (middle point) of your Hole from left (if the side is Top or Bottom) or top (if the side is Left or Right)
 HEADPHONE_JACK_OFFSET = 8.5;
 
@@ -223,27 +235,27 @@ module Cover()
         }
         if(VOLUME_BUTTON_HOLE == "yes")
         {
-            WallHole(side = VOLUME_BUTTON_SIDE, shape = VOLUME_BUTTON_SHAPE, off = VOLUME_BUTTON_OFFSET, size = VOLUME_BUTTON_SIZE);
+            WallHole(side = VOLUME_BUTTON_SIDE, shape = VOLUME_BUTTON_SHAPE, off = VOLUME_BUTTON_OFFSET, size = VOLUME_BUTTON_SIZE, height = VOLUME_BUTTON_HEIGHT);
         }
         if(POWER_BUTTON_HOLE == "yes")
         {
-            WallHole(side = POWER_BUTTON_SIDE, shape = POWER_BUTTON_SHAPE, off = POWER_BUTTON_OFFSET, size = POWER_BUTTON_SIZE);
+            WallHole(side = POWER_BUTTON_SIDE, shape = POWER_BUTTON_SHAPE, off = POWER_BUTTON_OFFSET, size = POWER_BUTTON_SIZE, height = POWER_BUTTON_HEIGHT);
         }
         if(USB_PLUG_HOLE == "yes")
         {
-            WallHole(side = USB_PLUG_SIDE, shape = USB_PLUG_SHAPE, off = USB_PLUG_OFFSET, size = USB_PLUG_SIZE);
+            WallHole(side = USB_PLUG_SIDE, shape = USB_PLUG_SHAPE, off = USB_PLUG_OFFSET, size = USB_PLUG_SIZE, height = USB_PLUG_HEIGHT);
         }
         if(SPEAKER_1_HOLE == "yes")
         {
-            WallHole(side = SPEAKER_1_SIDE, shape = SPEAKER_1_SHAPE, off = SPEAKER_1_OFFSET, size = SPEAKER_1_SIZE);
+            WallHole(side = SPEAKER_1_SIDE, shape = SPEAKER_1_SHAPE, off = SPEAKER_1_OFFSET, size = SPEAKER_1_SIZE, height = SPEAKER_1_HEIGHT);
         }
         if(SPEAKER_2_HOLE == "yes")
         {
-            WallHole(side = SPEAKER_2_SIDE, shape = SPEAKER_2_SHAPE, off = SPEAKER_2_OFFSET, size = SPEAKER_2_SIZE);
+            WallHole(side = SPEAKER_2_SIDE, shape = SPEAKER_2_SHAPE, off = SPEAKER_2_OFFSET, size = SPEAKER_2_SIZE, height = SPEAKER_2_HEIGHT);
         }
         if(HEADPHONE_JACK_HOLE == "yes")
         {
-            WallHole(side = HEADPHONE_JACK_SIDE, shape = HEADPHONE_JACK_SHAPE, off = HEADPHONE_JACK_OFFSET, size = HEADPHONE_JACK_SIZE);
+            WallHole(side = HEADPHONE_JACK_SIDE, shape = HEADPHONE_JACK_SHAPE, off = HEADPHONE_JACK_OFFSET, size = HEADPHONE_JACK_SIZE, height = HEADPHONE_JACK_HEIGHT);
         }
     }
 }
@@ -291,52 +303,56 @@ module Hole(xoff = 0, yoff = 0, xsize = 20, ysize = 20, radius = 10)
     }
 }
 
-module WallHole(side = "Right", shape="Round", off = 10, size = 20)
+module WallHole(side = "Right", shape = "Round", off = 10, size = 20, height = 5)
 {
     if(shape=="Roundy Rectangle") //rounded rect
     {
+        rounding = height/4;
         if(side == "Top")
         {
             translate([LENGTH/2,WIDTH/2-off,BASEPLATE_THICKNESS+HEIGHT/2]) rotate([0,270,0])
             {
-                translate([0,0,0]) minkowski()
+                translate([0,0,0])
+                minkowski()
                 {
-                    cube([HEIGHT/2,size-HEIGHT/2,WALL_THICKNESS*OVERTHICKNESS/2],true);
-                    cylinder(h = BASEPLATE_THICKNESS*H_OVERTHICKNESS/2,r = HEIGHT/4);
+                    cube([height-rounding*2, size-rounding*2, WALL_THICKNESS*OVERTHICKNESS/2], true);
+                    cylinder(h = BASEPLATE_THICKNESS*H_OVERTHICKNESS/2,r = rounding);
                 }
             }
-
         }
         if(side == "Bottom")
         {
-            translate([-LENGTH/2,WIDTH/2-off,BASEPLATE_THICKNESS+HEIGHT/2]) rotate([0,270,0])
+            translate([-LENGTH/2,WIDTH/2-off, BASEPLATE_THICKNESS+HEIGHT/2]) rotate([0,270,0])
             {
-                translate([0,0,0]) minkowski()
+                translate([0,0,0])
+                minkowski()
                 {
-                    cube([HEIGHT/2,size-HEIGHT/2,WALL_THICKNESS*OVERTHICKNESS/2],true);
-                    cylinder(h = BASEPLATE_THICKNESS*H_OVERTHICKNESS/2,r = HEIGHT/4);
+                    cube([height-rounding*2, size-rounding*2, WALL_THICKNESS*OVERTHICKNESS/2], true);
+                    cylinder(h = BASEPLATE_THICKNESS*H_OVERTHICKNESS/2,r = rounding);
                 }
             }
         }
         if(side == "Left")
         {
-            translate([LENGTH/2-off+size/2-HEIGHT/4,WIDTH/2+(WALL_THICKNESS),BASEPLATE_THICKNESS+HEIGHT/4]) rotate([0,270,90])
+            translate([LENGTH/2-off+size/2-rounding, WIDTH/2+(WALL_THICKNESS), BASEPLATE_THICKNESS+rounding+(HEIGHT-height)/2]) rotate([0,270,90])
             {
-                translate([0,0,0]) minkowski()
+                translate([0,0,0])
+                minkowski()
                 {
-                    cube([HEIGHT/2,size-HEIGHT/2,WALL_THICKNESS*OVERTHICKNESS/2]);
-                    cylinder(h = BASEPLATE_THICKNESS*H_OVERTHICKNESS/2,r = HEIGHT/4);
+                    cube([height-rounding*2, size-rounding*2, WALL_THICKNESS*OVERTHICKNESS/2]);
+                    cylinder(h = BASEPLATE_THICKNESS*H_OVERTHICKNESS/2, r = rounding);
                 }
             }
         }
         if(side == "Right")
         {
-            translate([LENGTH/2-off+size/2-HEIGHT/4,-(WIDTH/2)+(WALL_THICKNESS),BASEPLATE_THICKNESS+(HEIGHT/4)]) rotate([0,270,90])
+            translate([LENGTH/2-off+size/2-rounding, -(WIDTH/2)+(WALL_THICKNESS), BASEPLATE_THICKNESS+rounding+(HEIGHT-height)/2]) rotate([0,270,90])
             {
-                translate([0,0,0]) minkowski()
+                translate([0,0,0])
+                minkowski()
                 {
-                    cube([HEIGHT/2,size-HEIGHT/2,WALL_THICKNESS*OVERTHICKNESS/2]);
-                    cylinder(h = BASEPLATE_THICKNESS*H_OVERTHICKNESS/2,r = HEIGHT/4);
+                    cube([height-rounding*2, size-rounding*2, WALL_THICKNESS*OVERTHICKNESS/2]);
+                    cylinder(h = BASEPLATE_THICKNESS*H_OVERTHICKNESS/2, r = rounding);
                 }
             }
         }
