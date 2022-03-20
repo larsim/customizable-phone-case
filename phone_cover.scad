@@ -4,28 +4,28 @@
 
 /* [Phone] */
 // of your phone (mm)
-LENGTH = 152.25;
+LENGTH = 156.0;
 // of your phone (mm)
-WIDTH = 76.25;
+WIDTH = 69.0;
 // of your phone (mm)
 HEIGHT = 8.3;
 // of yout phone, Imagine the phone's round edge as a full circle and meassure its radius! If the edges are square type 0! (mm)
-CORNER_RADIUS = 9;
+CORNER_RADIUS = 4.5;
 
 /* [Camera] */
 
 //Do you have a Backside camera?
 CAMERA_HOLE = "yes"; // [yes,no]
 //Meassure the camera from left to right! (mm)
-CAMERA_LEFT_TO_RIGHT_SIZE = 15.0;
+CAMERA_LEFT_TO_RIGHT_SIZE = 12.0;
 //Meassure the distance from the left edge of the phone to the middle of your camera! (mm)
-CAMERA_LEFT_OFFSET = 38.125;
+CAMERA_LEFT_OFFSET = 13.0;
 //Meassure the camera from bottom to top! (mm)
-CAMERA_TOP_TO_BOTTOM_SIZE = 25.0;
+CAMERA_TOP_TO_BOTTOM_SIZE = 32.0;
 //Meassure the distance from the top edge of the phone to the middle of your camera! (mm)
-CAMERA_TOP_OFFSET = 23.4;
+CAMERA_TOP_OFFSET = 27.0;
 //Meassure the radius of the camera (like phones corner)! (mm)
-CAMERA_RADIUS = 7.5;
+CAMERA_RADIUS = 6;
 
 
 /* [Flashlight] */
@@ -35,18 +35,18 @@ FLASHLIGHT_HOLE = "yes"; // [yes,no]
 //Meassure the flashlight from left to right! (mm)
 FLASHLIGHT_LEFT_TO_RIGHT_SIZE = 5.0;
 //Meassure the distance from the left edge of the phone to the middle of your flashlight! (mm)
-FLASHLIGHT_LEFT_OFFSET = 50.7;
+FLASHLIGHT_LEFT_OFFSET = 13.0;
 //Meassure the flashlight from bottom to top! (mm)
-FLASHLIGHT_TOP_TO_BOTTOM_SIZE = 5.0;
+FLASHLIGHT_TOP_TO_BOTTOM_SIZE = 3.5;
 //Meassure the distance from the top edge of the phone to the middle of your flashlight! (mm)
-FLASHLIGHT_TOP_OFFSET = 18.3;
+FLASHLIGHT_TOP_OFFSET = 7.5;
 //Meassure the radius of the flashlight (like phones corner)! (mm)
-FLASHLIGHT_RADIUS = 2.5;
+FLASHLIGHT_RADIUS = 1.0;
 
 /* [Fingerprint Sensor] */
 
 //Do you have a fingerprint sensor at the back?
-FINGERPRINT_HOLE = "yes"; // [yes,no]
+FINGERPRINT_HOLE = "no"; // [yes,no]
 //Meassure the fingerprint sensor from left to right! (mm)
 FINGERPRINT_LEFT_TO_RIGHT_SIZE = 15;
 //Meassure the distance from the left edge of the phone to the middle of your fingerprint sensor! (mm)
@@ -68,9 +68,9 @@ VOLUME_BUTTON_SIDE = "Right"; // [Right,Left,Top,Bottom]
 //Which Shape do you want the hole to be?
 VOLUME_BUTTON_SHAPE = "Roundy Rectangle"; // [Roundy Rectangle,Round]
 //What size should the hole have?
-VOLUME_BUTTON_SIZE = 20;
+VOLUME_BUTTON_SIZE = 17.0;
 //Type in the offset (middle point) of your Hole from left (if the side is Top or Bottom) or top (if the side is Left or Right)
-VOLUME_BUTTON_OFFSET = 29.5;
+VOLUME_BUTTON_OFFSET = 46.0;
 
 /* [Power Button] */
 
@@ -81,9 +81,9 @@ POWER_BUTTON_SIDE = "Right"; // [Right,Left,Top,Bottom]
 //Which Shape do you want the hole to be?
 POWER_BUTTON_SHAPE = "Roundy Rectangle"; // [Roundy Rectangle,Round]
 //What size should the hole have?
-POWER_BUTTON_SIZE = 9.5;
+POWER_BUTTON_SIZE = 16;
 //Type in the offset (middle point) of your Hole from left (if the side is Top or Bottom) or top (if the side is Left or Right)
-POWER_BUTTON_OFFSET = 52;
+POWER_BUTTON_OFFSET = 72.5;
 
 /* [USB Plug] */
 
@@ -96,7 +96,7 @@ USB_PLUG_SHAPE = "Roundy Rectangle"; // [Roundy Rectangle,Round]
 //What size should the hole have?
 USB_PLUG_SIZE = 12;
 //Type in the offset (middle point) of your Hole from left (if the side is Top or Bottom) or top (if the side is Left or Right)
-USB_PLUG_OFFSET = 38.125;
+USB_PLUG_OFFSET = WIDTH / 2;
 
 /* [Speaker 1] */
 
@@ -105,24 +105,24 @@ SPEAKER_1_HOLE = "yes"; // [yes,no]
 //On which side of your phone is it?
 SPEAKER_1_SIDE = "Bottom"; // [Right,Left,Top,Bottom]
 //Which Shape do you want the hole to be?
-SPEAKER_1_SHAPE = "Roundy Rectangle"; // [Roundy Rectangle,Round]
+SPEAKER_1_SHAPE = "Round"; // [Roundy Rectangle,Round]
 //What size should the hole have?
-SPEAKER_1_SIZE = 13;
+SPEAKER_1_SIZE = 2;
 //Type in the offset (middle point) of your Hole from left (if the side is Top or Bottom) or top (if the side is Left or Right)
-SPEAKER_1_OFFSET = 19.5;
+SPEAKER_1_OFFSET = 25.0;
 
 /* [Speaker 2] */
 
 //Do you have a second Speaker?
 SPEAKER_2_HOLE = "yes"; // [yes,no]
 //On which side of your phone is it?
-SPEAKER_2_SIDE = "Bottom"; // [Right,Left,Top,Bottom]
+SPEAKER_2_SIDE = "Top"; // [Right,Left,Top,Bottom]
 //Which Shape do you want the hole to be?
-SPEAKER_2_SHAPE = "Roundy Rectangle"; // [Roundy Rectangle,Round]
+SPEAKER_2_SHAPE = "Round"; // [Roundy Rectangle,Round]
 //What size should the hole have?
-SPEAKER_2_SIZE = 13;
+SPEAKER_2_SIZE = 2.0;
 //Type in the offset (middle point) of your Hole from left (if the side is Top or Bottom) or top (if the side is Left or Right)
-SPEAKER_2_OFFSET = 57.5;
+SPEAKER_2_OFFSET = 56.0;
 
 /* [Headphone Jack] */
 
@@ -133,17 +133,17 @@ HEADPHONE_JACK_SIDE = "Top"; // [Right,Left,Top,Bottom]
 //Which Shape do you want the hole to be?
 HEADPHONE_JACK_SHAPE = "Round"; // [Roundy Rectangle,Round]
 //What size should the hole have?
-HEADPHONE_JACK_SIZE = 0;
+HEADPHONE_JACK_SIZE = 5.0;
 //Type in the offset (middle point) of your Hole from left (if the side is Top or Bottom) or top (if the side is Left or Right)
-HEADPHONE_JACK_OFFSET = 19;
+HEADPHONE_JACK_OFFSET = 8.5;
 
 
 /* [Cover Settings] */
 
 //Type in the thickness of the cover's groud plate! (mm)
-BASEPLATE_THICKNESS = 1;
+BASEPLATE_THICKNESS = 2.0;
 //Type in the thickness of the cover's walls around the phone! (mm)
-WALL_THICKNESS = 2;
+WALL_THICKNESS = 3;
 //Type in the length of the cover's walls around the phone! (%)
 WALL_TOP_TO_BOTTOM_LENGHT = 100; //[0:100]
 //Type in the length of the cover's walls around the phone! (%)
