@@ -27,7 +27,6 @@ CAMERA_TOP_OFFSET = 27.0;
 //Meassure the radius of the camera (like phones corner)! (mm)
 CAMERA_RADIUS = 6;
 
-
 /* [Flashlight] */
 
 //Do you have a flashlight at the back?
@@ -57,7 +56,6 @@ FINGERPRINT_TOP_TO_BOTTOM_SIZE = 15;
 FINGERPRINT_TOP_OFFSET = 41.5;
 //Meassure the radius of the fingerprint sensor (like phones corner)! (mm)
 FINGERPRINT_RADIUS = 7.25;
-;
 
 /* [Volume Button] */
 
@@ -350,7 +348,6 @@ module WallHole(side = "Right", shape="Round", off = 10, size = 20)
             translate([LENGTH/2+(WALL_THICKNESS*OVERTHICKNESS)/2+1,WIDTH/2-off,BASEPLATE_THICKNESS+HEIGHT/2]) rotate([0,270,0])
             {
                 translate([0,0,0]) {cylinder(h = WALL_THICKNESS*OVERTHICKNESS,r = size/2);}
-
             }
         }
         if(side == "Bottom")
@@ -358,7 +355,6 @@ module WallHole(side = "Right", shape="Round", off = 10, size = 20)
             translate([-(LENGTH/2-(WALL_THICKNESS*OVERTHICKNESS)/2+1),WIDTH/2-off,BASEPLATE_THICKNESS+HEIGHT/2]) rotate([0,270,0])
             {
                 translate([0,0,0]) {cylinder(h = WALL_THICKNESS*OVERTHICKNESS,r = size/2);}
-
             }
         }
         if(side == "Left")
@@ -366,7 +362,6 @@ module WallHole(side = "Right", shape="Round", off = 10, size = 20)
             translate([LENGTH/2-off,WIDTH/2+(WALL_THICKNESS*OVERTHICKNESS)/2+1,BASEPLATE_THICKNESS+HEIGHT/2]) rotate([0,270,90])
             {
                 translate([0,0,0]) {cylinder(h = WALL_THICKNESS*OVERTHICKNESS,r = size/2);}
-
             }
         }
         if(side == "Right")
@@ -481,9 +476,6 @@ module Walls(size_l=17, size_w=20, smoother = 1)
     WallCorners(smoother );
 }
 
-
-
-
 //Helper Modules
 
 module WallShape ()
@@ -522,7 +514,6 @@ module WallShape ()
 
 module ShapeSmoother(smoother = 1)
 {
-
         intersection()
         {
             if(smoother == 1)
@@ -532,10 +523,7 @@ module ShapeSmoother(smoother = 1)
             }
             WallShape ();
         }
-
-
 }
-
 
 module curve(smoother = 1)
 {
