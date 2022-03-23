@@ -61,6 +61,8 @@ FINGERPRINT_RADIUS = 7.25;
 
 //Do you have a volume button?
 VOLUME_BUTTON_HOLE = "yes"; // [yes,no]
+//Do you want a knob for it?
+VOLUME_BUTTON_KNOB = "yes"; // [yes,no]
 //On which side of your phone is it?
 VOLUME_BUTTON_SIDE = "Right"; // [Right,Left,Top,Bottom]
 //Which Shape do you want the hole to be?
@@ -75,7 +77,9 @@ VOLUME_BUTTON_OFFSET = 46.0;
 /* [Power Button] */
 
 //Do you have a power button?
-POWER_BUTTON_HOLE = "yes"; // [yes,no]
+POWER_BUTTON_HOLE = "no"; // [yes,no]
+//Do you want a knob for it?
+POWER_BUTTON_KNOB = "yes"; // [yes,no]
 //On which side of your phone is it?
 POWER_BUTTON_SIDE = "Right"; // [Right,Left,Top,Bottom]
 //Which Shape do you want the hole to be?
@@ -258,6 +262,14 @@ module Cover()
             WallHole(side = HEADPHONE_JACK_SIDE, shape = HEADPHONE_JACK_SHAPE, off = HEADPHONE_JACK_OFFSET, size = HEADPHONE_JACK_SIZE, height = HEADPHONE_JACK_HEIGHT);
         }
     }
+    if(VOLUME_BUTTON_KNOB == "yes")
+    {
+        Knob(side = VOLUME_BUTTON_SIDE, shape = VOLUME_BUTTON_SHAPE, off = VOLUME_BUTTON_OFFSET, size = VOLUME_BUTTON_SIZE, height = VOLUME_BUTTON_HEIGHT);
+    }
+    if(POWER_BUTTON_KNOB == "yes")
+    {
+        Knob(side = POWER_BUTTON_SIDE, shape = POWER_BUTTON_SHAPE, off = POWER_BUTTON_OFFSET, size = POWER_BUTTON_SIZE, height = POWER_BUTTON_HEIGHT);
+    }
 }
 
 module Hole(xoff = 0, yoff = 0, xsize = 20, ysize = 20, radius = 10)
@@ -316,7 +328,7 @@ module WallHole(side = "Right", shape = "Round", off = 10, size = 20, height = 5
                 minkowski()
                 {
                     cube([height-rounding*2, size-rounding*2, WALL_THICKNESS*OVERTHICKNESS/2], true);
-                    cylinder(h = BASEPLATE_THICKNESS*H_OVERTHICKNESS/2,r = rounding);
+                    cylinder(h = WALL_THICKNESS*OVERTHICKNESS/2,r = rounding);
                 }
             }
         }
@@ -328,7 +340,7 @@ module WallHole(side = "Right", shape = "Round", off = 10, size = 20, height = 5
                 minkowski()
                 {
                     cube([height-rounding*2, size-rounding*2, WALL_THICKNESS*OVERTHICKNESS/2], true);
-                    cylinder(h = BASEPLATE_THICKNESS*H_OVERTHICKNESS/2,r = rounding);
+                    cylinder(h = WALL_THICKNESS*OVERTHICKNESS/2,r = rounding);
                 }
             }
         }
@@ -340,7 +352,7 @@ module WallHole(side = "Right", shape = "Round", off = 10, size = 20, height = 5
                 minkowski()
                 {
                     cube([height-rounding*2, size-rounding*2, WALL_THICKNESS*OVERTHICKNESS/2]);
-                    cylinder(h = BASEPLATE_THICKNESS*H_OVERTHICKNESS/2, r = rounding);
+                    cylinder(h = WALL_THICKNESS*OVERTHICKNESS/2, r = rounding);
                 }
             }
         }
@@ -352,7 +364,7 @@ module WallHole(side = "Right", shape = "Round", off = 10, size = 20, height = 5
                 minkowski()
                 {
                     cube([height-rounding*2, size-rounding*2, WALL_THICKNESS*OVERTHICKNESS/2]);
-                    cylinder(h = BASEPLATE_THICKNESS*H_OVERTHICKNESS/2, r = rounding);
+                    cylinder(h = WALL_THICKNESS*OVERTHICKNESS/2, r = rounding);
                 }
             }
         }
@@ -385,6 +397,94 @@ module WallHole(side = "Right", shape = "Round", off = 10, size = 20, height = 5
             translate([LENGTH/2-off,-(WIDTH/2-(WALL_THICKNESS*OVERTHICKNESS)/2+1),BASEPLATE_THICKNESS+HEIGHT/2]) rotate([0,270,90])
             {
                 translate([0,0,0]) {cylinder(h = WALL_THICKNESS*OVERTHICKNESS,r = size/2);}
+            }
+        }
+    }
+}
+
+module Knob(side = "Right", shape = "Round", off = 10, size = 20, height = 5)
+{
+    depth = 1.0;
+    if(shape=="Roundy Rectangle") //rounded rect
+    {
+        rounding = height/4;
+        if(side == "Top")
+        {
+            translate([LENGTH/2+WALL_THICKNESS,WIDTH/2-off,BASEPLATE_THICKNESS+HEIGHT/2]) rotate([0,270,0])
+            {
+                translate([0,0,0])
+                minkowski()
+                {
+                    cube([height-rounding*2, size-rounding*2, depth/2], true);
+                    cylinder(h = depth/2,r = rounding);
+                }
+            }
+        }
+        if(side == "Bottom")
+        {
+            translate([-LENGTH/2-WALL_THICKNESS,WIDTH/2-off, BASEPLATE_THICKNESS+HEIGHT/2]) rotate([0,270,0])
+            {
+                translate([0,0,0])
+                minkowski()
+                {
+                    cube([height-rounding*2, size-rounding*2, depth/2], true);
+                    cylinder(h = depth/2,r = rounding);
+                }
+            }
+        }
+        if(side == "Left")
+        {
+            translate([LENGTH/2-off+size/2-rounding, WIDTH/2+WALL_THICKNESS+depth/2, BASEPLATE_THICKNESS+rounding+(HEIGHT-height)/2]) rotate([0,270,90])
+            {
+                translate([0,0,0])
+                minkowski()
+                {
+                    cube([height-rounding*2, size-rounding*2, depth]);
+                    cylinder(h = depth, r = rounding);
+                }
+            }
+        }
+        if(side == "Right")
+        {
+            translate([LENGTH/2-off+size/2-rounding, -(WIDTH/2)-WALL_THICKNESS/2, BASEPLATE_THICKNESS+rounding+(HEIGHT-height)/2]) rotate([0,270,90])
+            {
+                translate([0,0,0])
+                minkowski()
+                {
+                    cube([height-rounding*2, size-rounding*2, depth]);
+                    cylinder(h = depth, r = rounding);
+                }
+            }
+        }
+    }
+    else if(shape=="Round") //circle
+    {
+        if(side == "Top")
+        {
+            translate([LENGTH/2+WALL_THICKNESS+depth/2,WIDTH/2-off,BASEPLATE_THICKNESS+HEIGHT/2]) rotate([0,270,0])
+            {
+                translate([0,0,0]) {cylinder(h = depth, r = size/2);}
+            }
+        }
+        if(side == "Bottom")
+        {
+            translate([-LENGTH/2-WALL_THICKNESS+depth/2,WIDTH/2-off,BASEPLATE_THICKNESS+HEIGHT/2]) rotate([0,270,0])
+            {
+                translate([0,0,0]) {cylinder(h = depth, r = size/2);}
+            }
+        }
+        if(side == "Left")
+        {
+            translate([LENGTH/2-off,WIDTH/2+WALL_THICKNESS+depth/2,BASEPLATE_THICKNESS+HEIGHT/2]) rotate([0,270,90])
+            {
+                translate([0,0,0]) {cylinder(h = depth, r = size/2);}
+            }
+        }
+        if(side == "Right")
+        {
+            translate([LENGTH/2-off,-(WIDTH/2)-WALL_THICKNESS,BASEPLATE_THICKNESS+HEIGHT/2]) rotate([0,270,90])
+            {
+                translate([0,0,0]) {cylinder(h = depth, r = size/2);}
             }
         }
     }
