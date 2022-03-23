@@ -96,9 +96,9 @@ USB_PLUG_SIDE = "Bottom"; // [Right,Left,Top,Bottom]
 //Which Shape do you want the hole to be?
 USB_PLUG_SHAPE = "Roundy Rectangle"; // [Roundy Rectangle,Round]
 //What size should the hole have?
-USB_PLUG_SIZE = 12;
+USB_PLUG_SIZE = 17;
 //How high hole?
-USB_PLUG_HEIGHT = 5;
+USB_PLUG_HEIGHT = 6.5;
 //Type in the offset (middle point) of your Hole from left (if the side is Top or Bottom) or top (if the side is Left or Right)
 USB_PLUG_OFFSET = WIDTH / 2;
 
@@ -109,11 +109,11 @@ SPEAKER_1_HOLE = "yes"; // [yes,no]
 //On which side of your phone is it?
 SPEAKER_1_SIDE = "Bottom"; // [Right,Left,Top,Bottom]
 //Which Shape do you want the hole to be?
-SPEAKER_1_SHAPE = "Round"; // [Roundy Rectangle,Round]
+SPEAKER_1_SHAPE = "Roundy Rectangle"; // [Roundy Rectangle,Round]
 //What size should the hole have?
-SPEAKER_1_SIZE = 2;
+SPEAKER_1_SIZE = 3.5;
 //How high hole?
-SPEAKER_1_HEIGHT = 2;
+SPEAKER_1_HEIGHT = 3.5;
 //Type in the offset (middle point) of your Hole from left (if the side is Top or Bottom) or top (if the side is Left or Right)
 SPEAKER_1_OFFSET = 25.0;
 
@@ -126,7 +126,7 @@ SPEAKER_2_SIDE = "Top"; // [Right,Left,Top,Bottom]
 //Which Shape do you want the hole to be?
 SPEAKER_2_SHAPE = "Round"; // [Roundy Rectangle,Round]
 //What size should the hole have?
-SPEAKER_2_SIZE = 2.0;
+SPEAKER_2_SIZE = 3.5;
 //How high hole?
 SPEAKER_2_HEIGHT = 2;
 //Type in the offset (middle point) of your Hole from left (if the side is Top or Bottom) or top (if the side is Left or Right)
@@ -141,11 +141,11 @@ HEADPHONE_JACK_SIDE = "Top"; // [Right,Left,Top,Bottom]
 //Which Shape do you want the hole to be?
 HEADPHONE_JACK_SHAPE = "Round"; // [Roundy Rectangle,Round]
 //What size should the hole have?
-HEADPHONE_JACK_SIZE = 5.0;
+HEADPHONE_JACK_SIZE = 6.0;
 //How high hole?
 HEADPHONE_JACK_HEIGHT = 2;
 //Type in the offset (middle point) of your Hole from left (if the side is Top or Bottom) or top (if the side is Left or Right)
-HEADPHONE_JACK_OFFSET = 8.5;
+HEADPHONE_JACK_OFFSET = 10.5;
 
 
 /* [Cover Settings] */
